@@ -8,7 +8,7 @@ public class Flyer
 	public static void main (String[] args) throws java.lang.Exception
 	{
 	   //Create a scanner object
-       Scanner input = new Scanner(System.in);
+       Scanner input = new Scanner(System.in); //int test; 
        
       //Declare other required variables
       boolean validNumber = true;
@@ -46,13 +46,12 @@ public class Flyer
         customerZipCode = input.nextInt();
         if ( (customerZipCode >= 60442) && (customerZipCode <= 60450) )
       {
-          deliveryCharge = 5; 
-        System.out.println("Delivery Available. Delivery charge will be: $" + deliveryCharge);
-          
+        deliveryCharge = 5; 
+        System.out.println("Delivery Available. Delivery charge will be: $" + deliveryCharge);       
       }
          else if( (customerZipCode == 60451 ) || (customerZipCode == 60441 ) )
-     {
-           		deliveryCharge = 7; 
+      {
+         deliveryCharge = 7; 
                 System.out.println("Delivery Available. Delivery charge will be: $" + deliveryCharge);
       }          
         else 
@@ -65,46 +64,47 @@ public class Flyer
       
       //in a while loop
     	  
-      //while(keepOrdering)
+      while(keepOrdering)
       {
       //Print the menu 
-    	  
       System.out.println("Enter 1 for Flyers' Burger: $4.50 per an order");
       System.out.println("Enter 2 for Flyers' Drink: $1.50 per a container");
       System.out.println("Enter 3 for Flyers' Fries: $ 2.50 per an order");
       System.out.println("Enter 4 Flyers' Dessert: $ 3.00 per an order"); 
-      } 
-        //Take the user selection 
-       if ( userSelection == 1 )
-       {
-       orderTotal = orderTotal + 4.50 ; 
-       }
-        else if (  userSelection == 2 )
-        {
-       orderTotal = orderTotal + 1.50; 	
-        }
        
-        else if (  userSelection == 3 )
-        {
-        orderTotal = orderTotal + 2.50;
-        }
-       
-        //else if (  userSelection == 4 )
-       // {
-       // orderTotal = orderTotal + 3.00;
-       // }
-            else 
+      System.out.println("Enter your order one by one now: "); 
+      userSelection = input.nextInt();
+        
       
-     //Ask user if they want to enter more (this will be if statement) 
-           {
-            	System.out.println("To keep ordering enter 1");
-            	ordertype = input.nextInt();
-            	keepOrdering = false;
-           
+      //Take the user selection 
+       if ( userSelection == 1 )    	   
+        {
+         orderTotal = orderTotal + 4.50 ; 
+        }
+       else if (  userSelection == 2 )
+        {
+         orderTotal = orderTotal + 1.50; 	
+        }
+       else if (  userSelection == 3 )
+        {
+         orderTotal = orderTotal + 2.50;
+        }
+       else if (  userSelection == 4 )
+        {
+         orderTotal = orderTotal + 3.00;
+        } 
+          
+        System.out.println("To keep ordering enter 1, or else enter 2");
+        userSelection = input.nextInt();
+          
+       if(userSelection  != 1)
+          {
+        	keepOrdering = false;
+          }
        
-
+      } //Ending while loop
       //TotalCost = oderTotal * tax + deliveryCharge ;
-      totalCost = orderTotal * .5 + deliveryCharge;
-	}
-}
+      totalCost = orderTotal + orderTotal * .05 + deliveryCharge;
+      System.out.println("Your complete total is " + totalCost +  "\nYour orderToal is " +  orderTotal + "\nYour deliverCharge is "  +  deliveryCharge); 
+    }
 }	
